@@ -2,7 +2,6 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
   Dialog,
   DialogContent,
@@ -26,7 +25,6 @@ import {
   Home,
   Menu,
   Mic,
-  Plus,
   Search,
   Settings,
   User,
@@ -57,7 +55,7 @@ export default function OPDDashboard() {
     console.log(`Releasing bed with ID: ${bedId}`);
   };
   const [isNavOpen, setIsNavOpen] = useState(false);
-  const [patients, setPatients] = useState([
+  const [patients] = useState([
     {
       id: 1,
       name: "John Doe",
@@ -101,14 +99,14 @@ export default function OPDDashboard() {
       patient: patients[1],
     },
   ]);
-  const addNewPatient = (patient) => {
-    const newPatient = {
-      id: patients.length + 1,
-      ...patient,
-      lastVisit: new Date().toISOString().split("T")[0],
-    };
-    setPatients([...patients, newPatient]);
-  };
+  // const addNewPatient = (patient) => {
+  //   const newPatient = {
+  //     id: patients.length + 1,
+  //     ...patient,
+  //     lastVisit: new Date().toISOString().split("T")[0],
+  //   };
+  //   setPatients([...patients, newPatient]);
+  // };
 
   return (
     <div className="min-h-screen bg-gray-100">
