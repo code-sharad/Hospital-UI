@@ -97,7 +97,7 @@ export default function LandingPage() {
             <div className="grid items-center gap-6 lg:grid-cols-2 overflow-hidden lg:gap-12">
               <img
                 alt="Hospital Management Dashboard"
-                className="mx-auto w-[650px] mix-blend-darken size-[500px]  bg-red-400 aspect-video overflow-hidden rounded-xl object-cover object-center"
+                className="mx-auto mix-blend-darken  bg-green-300  overflow-hidden rounded-xl object-cover object-center"
                 height="310"
                 src={dashboardLogo}
                 width="650"
