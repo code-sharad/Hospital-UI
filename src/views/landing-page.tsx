@@ -1,4 +1,3 @@
-import { Button } from "@/components/ui/button";
 import { Hospital, Users, Clipboard, Package } from "lucide-react";
 import dashboardLogo  from "../assets/dashboard.png"
 export default function LandingPage() {
