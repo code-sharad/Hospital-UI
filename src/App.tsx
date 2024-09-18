@@ -1,4 +1,6 @@
+import { Activity } from "lucide-react";
 import "./App.css";
+import LandingPage from "./views/landing-page";
 
 function App() {
   return (
@@ -6,6 +8,8 @@ function App() {
       <div>
         <nav>
           <ul className="flex flex-wrap  gap-7 mt-10 justify-between sm:w-[400px] lg:w-[700px] mx-auto">
+            <Activity className="h-6 w-6" />
+
             <li className="hover:underline">
               <a href="/">Home</a>
             </li>
@@ -27,6 +31,7 @@ function App() {
           </ul>
         </nav>
       </div>
+      <LandingPage />
     </main>
   );
 }

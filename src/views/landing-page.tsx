@@ -1,47 +1,14 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Activity, Bed, Clipboard, Package, Server } from "lucide-react";
+import { Bed, Clipboard, Package, Server } from "lucide-react";
 
 export default function LandingPage() {
   return (
     <div className="flex flex-col min-h-screen  items-center">
       <header className=" h-14 flex items-center">
         <a className="flex items-center justify-center" href="#">
-          <Activity className="h-6 w-6" />
           <span className="sr-only">HospitalChain</span>
         </a>
-        <nav className="ml-auto flex gap-4 sm:gap-6">
-          <a
-            className="text-sm font-medium hover:underline underline-offset-4"
-            href="#features"
-          >
-            Features
-          </a>
-          <a
-            className="text-sm font-medium hover:underline underline-offset-4"
-            href="#technology"
-          >
-            Technology
-          </a>
-          <a
-            className="text-sm font-medium hover:underline underline-offset-4"
-            href="#contact"
-          >
-            Contact
-          </a>
-          <a
-            className="text-sm font-medium hover:underline underline-offset-4"
-            href="/login"
-          >
-            Login
-          </a>
-          <a
-            className="text-sm font-medium hover:underline underline-offset-4"
-            href="/signup"
-          >
-            Signup
-          </a>
-        </nav>
       </header>
       <main className="flex-1">
         <section className="w-full py-12 md:py-24 lg:py-32 xl:py-48 bg-gradient-to-r from-blue-100 via-blue-50 to-white">
