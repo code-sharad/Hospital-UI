@@ -34,6 +34,7 @@ import {
   Bed,
   //   BarChart,
 } from "lucide-react";
+import PatientsPage from "../patient/Patient";
 
 interface Patient {
   id: number;
@@ -304,94 +305,6 @@ export default function OPDDashboard() {
             </CardHeader>
             <CardContent>
               <div className="grid grid-cols-2 gap-4">
-                <Dialog>
-                  <DialogTrigger asChild>
-                    <Button className="flex flex-col items-center justify-center h-24 bg-red-100 text-red-600 hover:bg-red-200">
-                      <Plus className="h-6 w-6 mb-2" />
-                      New Patient
-                    </Button>
-                  </DialogTrigger>
-                  <DialogContent>
-                    <DialogHeader>
-                      <DialogTitle>Add New Patient</DialogTitle>
-                      <DialogDescription>
-                        Enter the details of the new patient below.
-                      </DialogDescription>
-                    </DialogHeader>
-                    <form
-                      onSubmit={(e) => {
-                        e.preventDefault();
-                        const formData = new FormData(
-                          e.target as HTMLFormElement
-                        );
-                        const newPatient = {
-                          name: formData.get("name"),
-                          age: parseInt(formData.get("age") as string),
-                          gender: formData.get("gender"),
-                          contact: formData.get("contact"),
-                        };
-                        addNewPatient(newPatient);
-                      }}
-                    >
-                      <div className="grid gap-4 py-4">
-                        <div className="grid grid-cols-4 items-center gap-4">
-                          <Label htmlFor="name" className="text-right">
-                            Name
-                          </Label>
-                          <Input
-                            id="name"
-                            name="name"
-                            className="col-span-3"
-                            required
-                          />
-                        </div>
-                        <div className="grid grid-cols-4 items-center gap-4">
-                          <Label htmlFor="age" className="text-right">
-                            Age
-                          </Label>
-                          <Input
-                            id="age"
-                            name="age"
-                            type="number"
-                            className="col-span-3"
-                            required
-                          />
-                        </div>
-                        <div className="grid grid-cols-4 items-center gap-4">
-                          <Label htmlFor="gender" className="text-right">
-                            Gender
-                          </Label>
-                          <Select name="gender" required>
-                            <SelectTrigger className="col-span-3">
-                              <SelectValue placeholder="Select gender" />
-                            </SelectTrigger>
-                            <SelectContent>
-                              <SelectItem value="male">Male</SelectItem>
-                              <SelectItem value="female">Female</SelectItem>
-                              <SelectItem value="other">Other</SelectItem>
-                            </SelectContent>
-                          </Select>
-                        </div>
-                        <div className="grid grid-cols-4 items-center gap-4">
-                          <Label htmlFor="contact" className="text-right">
-                            Contact
-                          </Label>
-                          <Input
-                            id="contact"
-                            name="contact"
-                            type="tel"
-                            className="col-span-3"
-                            required
-                          />
-                        </div>
-                      </div>
-                      <DialogTrigger asChild>
-                        <Button type="submit">Add Patient</Button>
-                      </DialogTrigger>
-                    </form>
-                  </DialogContent>
-                </Dialog>
-
                 <Dialog>
                   <DialogTrigger asChild>
                     <Button className="flex flex-col items-center justify-center h-24 bg-blue-100 text-blue-600 hover:bg-blue-200">
@@ -691,98 +604,7 @@ export default function OPDDashboard() {
             </CardContent>
           </Card>
         </div>
-
-        <Card className="mt-8">
-          <CardHeader>
-            <CardTitle className="text-lg font-medium text-gray-900">
-              Patient Categories
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <Tabs defaultValue="all" className="w-full">
-              <TabsList className="flex flex-wrap">
-                <TabsTrigger value="all">All</TabsTrigger>
-                <TabsTrigger value="new">New</TabsTrigger>
-                <TabsTrigger value="follow-up">Follow-up</TabsTrigger>
-                <TabsTrigger value="critical">Critical</TabsTrigger>
-              </TabsList>
-              <TabsContent value="all" className="mt-4">
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                  {patients.map((patient) => (
-                    <div
-                      key={patient.id}
-                      className="flex items-center space-x-3 p-3 bg-white rounded-lg shadow-sm"
-                    >
-                      <div className="flex-shrink-0 w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center">
-                        <User className="h-5 w-5 text-gray-500" />
-                      </div>
-                      <div className="flex-1 min-w-0">
-                        <p className="text-sm font-medium text-gray-900 truncate">
-                          {patient.name}
-                        </p>
-                        <p className="text-sm text-gray-500">
-                          Age: {patient.age}
-                        </p>
-                      </div>
-                      <Dialog>
-                        <DialogTrigger asChild>
-                          <Button
-                            variant="outline"
-                            size="sm"
-                            onClick={() => setSelectedPatient(patient)}
-                          >
-                            View
-                          </Button>
-                        </DialogTrigger>
-                        <DialogContent>
-                          <DialogHeader>
-                            <DialogTitle>Patient Details</DialogTitle>
-                          </DialogHeader>
-                          <div className="py-4">
-                            <div className="grid grid-cols-2 gap-4">
-                              <div>
-                                <Label>Name</Label>
-                                <p className="mt-1">{selectedPatient?.name}</p>
-                              </div>
-                              <div>
-                                <Label>Age</Label>
-                                <p className="mt-1">{selectedPatient?.age}</p>
-                              </div>
-                              <div>
-                                <Label>Gender</Label>
-                                <p className="mt-1">
-                                  {selectedPatient?.gender}
-                                </p>
-                              </div>
-                              <div>
-                                <Label>Last Visit</Label>
-                                <p className="mt-1">
-                                  {selectedPatient?.lastVisit}
-                                </p>
-                              </div>
-                            </div>
-                            <div className="mt-4">
-                              <Label>Medical History</Label>
-                              <Textarea
-                                className="mt-1"
-                                placeholder="No medical history available"
-                              />
-                            </div>
-                            <div className="mt-4">
-                              <Label>Upcoming Appointments</Label>
-                              <p className="mt-1">No upcoming appointments</p>
-                            </div>
-                          </div>
-                        </DialogContent>
-                      </Dialog>
-                    </div>
-                  ))}
-                </div>
-              </TabsContent>
-              {/* Add similar TabsContent for other categories */}
-            </Tabs>
-          </CardContent>
-        </Card>
+        <PatientsPage/>
       </main>
     </div>
   );
